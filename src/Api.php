@@ -44,20 +44,4 @@ class Api {
         return $mangas;
     }
 }
-
-// Instantiate the Api class
-$api = new Api();
-
-// Call the scrapApi() method to retrieve manga information
-$data = $api->scrapApi();
-
-// Display manga information
-foreach ($data as $manga) {
-    echo "Title: " . $manga['title'] . "\n";
-    echo "Image: " . $manga['image'] . "\n";
-    echo "Description: " . $manga['description'] . "\n";
-    echo "Genre: " . $manga['genre'] . "\n";
-    echo "Note: " . $manga['note'] . "\n";
-    echo "----------------------------------\n";
-}
 ?>
