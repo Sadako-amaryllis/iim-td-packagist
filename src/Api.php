@@ -1,24 +1,21 @@
 <?php
-
 declare(strict_types=1);
 
 namespace Mymi\Opensource;
+require_once 'vendor/autoload.php';
 
-use Goutte\Client;
+use Symfony\Component\BrowserKit\HttpBrowser;
 use Symfony\Component\HttpClient\HttpClient;
 
 class Api {
     public function scrapApi() {
         $url = 'https://www.ledojomanga.com/anime';
 
-        // Crée une instance de Symfony HttpClient
-        $httpClient = HttpClient::create();
+        // Crée une instance de HttpBrowser
+        $browser = new HttpBrowser(HttpClient::create());
 
-        // Crée une instance de Goutte Client en utilisant le Symfony HttpClient
-        $client = new Client();
-        $client->setClient($httpClient);
-
-        $crawler = $client->request('GET', $url);
+        // Accède à l'URL spécifiée
+        $crawler = $browser->request('GET', $url);
 
         // Tableau pour stocker les données des mangas
         $mangas = [];
@@ -43,7 +40,24 @@ class Api {
                 'note' => $note,
             ];
         });
+
         return $mangas;
     }
+}
+
+// Instantiate the Api class
+$api = new Api();
+
+// Call the scrapApi() method to retrieve manga information
+$data = $api->scrapApi();
+
+// Display manga information
+foreach ($data as $manga) {
+    echo "Title: " . $manga['title'] . "\n";
+    echo "Image: " . $manga['image'] . "\n";
+    echo "Description: " . $manga['description'] . "\n";
+    echo "Genre: " . $manga['genre'] . "\n";
+    echo "Note: " . $manga['note'] . "\n";
+    echo "----------------------------------\n";
 }
 ?>
