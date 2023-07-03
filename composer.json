@@ -19,6 +19,7 @@
     },
     "require": {
         "symfony/dom-crawler": "^6.3",
-        "masterminds/html5": "^2.8"
+        "masterminds/html5": "^2.8",
+        "symfony/http-client": "^6.3"
     }
 }

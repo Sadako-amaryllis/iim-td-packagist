@@ -5,12 +5,19 @@ declare(strict_types=1);
 namespace Mymi\Opensource;
 
 use Goutte\Client;
+use Symfony\Component\HttpClient\HttpClient;
 
 class Api {
-    public function scrapApi(){
+    public function scrapApi() {
         $url = 'https://www.ledojomanga.com/anime';
 
+        // Crée une instance de Symfony HttpClient
+        $httpClient = HttpClient::create();
+
+        // Crée une instance de Goutte Client en utilisant le Symfony HttpClient
         $client = new Client();
+        $client->setClient($httpClient);
+
         $crawler = $client->request('GET', $url);
 
         // Tableau pour stocker les données des mangas
@@ -36,8 +43,6 @@ class Api {
                 'note' => $note,
             ];
         });
-
-        // Retourner les données des mangas
         return $mangas;
     }
 }
