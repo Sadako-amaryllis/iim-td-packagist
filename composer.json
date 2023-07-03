@@ -1,0 +1,24 @@
+{
+    "name": "mymi/opensource-td3",
+    "description": "bibliothèque open source manga",
+    "autoload": {
+        "psr-4": {
+            "Mymi\\Opensource\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mylene",
+            "email": "mylene.mzali@edu.devinci.fr"
+        }
+    ],
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "friendsofphp/php-cs-fixer": "^3.20",
+        "phpunit/phpunit": "^10.2"
+    },
+    "require": {
+        "symfony/dom-crawler": "^6.3",
+        "masterminds/html5": "^2.8"
+    }
+}

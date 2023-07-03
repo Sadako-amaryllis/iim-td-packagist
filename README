@@ -1,0 +1,59 @@
+Manga API Documentation
+Introduction
+The Manga API is a PHP library that provides functionality to retrieve manga information from the website https://www.ledojomanga.com/anime. It utilizes the Goutte library for web scraping purposes.
+
+Installation
+To use the Manga API library, you need to have Composer installed. If you haven't installed Composer yet, you can download it from https://getcomposer.org/.
+
+Open a command prompt and navigate to your project directory.
+Run the following command to install the required dependencies:
+shell
+Copy code
+composer require symfony/dom-crawler
+The library and its dependencies will be installed, and Composer will generate the necessary autoload files.
+Usage
+Class: Mymi\Opensource\Api
+The Api class provides the main functionality for retrieving manga information from https://www.ledojomanga.com/anime.
+
+Method: scrapApi()
+The scrapApi() method is responsible for scraping the manga information from the website.
+
+php
+Copy code
+public function scrapApi(): array
+Return Value
+Returns an array containing the manga information retrieved from the website. Each manga is represented as an associative array with the following keys:
+title: The title of the manga.
+image: The URL of the manga cover image.
+description: The description of the manga.
+genre: The genre(s) of the manga.
+note: The rating/note of the manga.
+Example Usage
+php
+Copy code
+require_once 'Api.php';
+
+// Instantiate the Api class
+$api = new Mymi\Opensource\Api();
+
+// Call the scrapApi() method to retrieve manga information
+$data = $api->scrapApi();
+
+// Display manga information
+foreach ($data as $manga) {
+    echo "Title: " . $manga['title'] . "\n";
+    echo "Image: " . $manga['image'] . "\n";
+    echo "Description: " . $manga['description'] . "\n";
+    echo "Genre: " . $manga['genre'] . "\n";
+    echo "Note: " . $manga['note'] . "\n";
+    echo "----------------------------------\n";
+}
+This example demonstrates how to use the scrapApi() method to retrieve manga information and display it.
+
+Error Handling
+The Manga API library does not provide built-in error handling mechanisms. It assumes that the website structure and data remain consistent. If any changes occur on the website's structure, the scraping process may fail or retrieve incomplete data. It's recommended to include appropriate error handling and data validation in your application.
+
+Conclusion
+The Manga API library provides a convenient way to retrieve manga information from https://www.ledojomanga.com/anime using web scraping techniques. By following the installation and usage instructions outlined in this documentation, you can seamlessly integrate the library into your PHP projects and access the desired manga details.
+
+Please note that web scraping should always be done in compliance with the target website's terms of service and legal restrictions.
