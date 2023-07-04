@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Api.php';
+require_once '../tests/ApiTest.php';
 
 // Instancier la classe Api
 $api = new Mymi\Opensource\Api();
